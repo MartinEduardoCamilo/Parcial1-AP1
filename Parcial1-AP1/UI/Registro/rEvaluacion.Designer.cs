@@ -193,7 +193,6 @@
             this.PronosticocomboBox1.Name = "PronosticocomboBox1";
             this.PronosticocomboBox1.Size = new System.Drawing.Size(401, 21);
             this.PronosticocomboBox1.TabIndex = 15;
-            this.PronosticocomboBox1.SelectedIndexChanged += new System.EventHandler(this.PronosticocomboBox1_SelectedIndexChanged);
             // 
             // Nuevobutton1
             // 

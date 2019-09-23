@@ -103,8 +103,9 @@ namespace Parcial1_AP1.UI.Registro
             Myerror.Clear();
 
             int id = Convert.ToInt32(EstudianteIdnumericUpDown1.Value);
+            evaluacion = RegistroEvaluacionBLL.Buscar(id);
 
-            if (RegistroEvaluacionBLL.Buscar(id))
+            if (evaluacion != null)
             {
                 MessageBox.Show("Estudiante encontrado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LlenaCampo(evaluacion);
@@ -164,29 +165,6 @@ namespace Parcial1_AP1.UI.Registro
             {
                 Myerror.SetError(EstudianteIdnumericUpDown1, "no se puede borrar al alguien que no existe");
                 EstudianteIdnumericUpDown1.Focus();
-            }
-        }
-
-        private void PronosticocomboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if(Convert.ToDecimal(PuntosperdidostextBox1.Text) < 25)
-            {
-                PronosticocomboBox1.SelectedItem = "Coninuar";
-            }
-            else
-            {
-                if(Convert.ToDecimal(PuntosperdidostextBox1.Text) >= 25 &&  Convert.ToDecimal(PuntosperdidostextBox1.Text) <= 30)
-                {
-                    PronosticocomboBox1.SelectedItem = "Suspencion";
-                }
-                else
-                {
-                    if(Convert.ToDecimal(PronosticocomboBox1.Text) > 30)
-                    {
-                        PronosticocomboBox1.SelectedItem = "Retinar";
-                    }
-                }
             }
         }
     }
