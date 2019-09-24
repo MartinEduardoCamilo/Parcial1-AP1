@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace Parcial1_AP1.BLL
 {
-    public class RegistroEvaluacionBLL
+    public class EvaluacionBLL
     {
         public static bool Guardar(Evaluacion evaluacion)
         {
@@ -79,7 +79,7 @@ namespace Parcial1_AP1.BLL
             {
                 var eliminar = db.Evaluacions.Find(id);
                 db.Entry(eliminar).State = EntityState.Deleted;
-                paso = db.SaveChanges() > 0;
+                paso = (db.SaveChanges() > 0);
             }
             catch (Exception)
             {
@@ -92,7 +92,7 @@ namespace Parcial1_AP1.BLL
             return paso;
         }
 
-        public static List<Evaluacion> GetList(Expression<Func<Evaluacion, bool>> evaluacion)
+       public static List<Evaluacion>GetList(Expression<Func<Evaluacion,bool>> evaluacion)
         {
             List<Evaluacion> lista = new List<Evaluacion>();
             Contexto db = new Contexto();

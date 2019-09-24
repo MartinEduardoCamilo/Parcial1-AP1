@@ -19,11 +19,11 @@ namespace Parcial1_AP1.BLL.Tests
             Evaluacion evaluacion = new Evaluacion();
             evaluacion.EstudianteId = 0;
             evaluacion.Fecha = DateTime.Now;
-            evaluacion.Nombre = "Test";
+            evaluacion.Estudiante = "Test";
             evaluacion.Valor = 20;
             evaluacion.Calificacion = 15;
             evaluacion.PuntosPerdidos = evaluacion.Valor - evaluacion.Calificacion;
-            paso = RegistroEvaluacionBLL.Guardar(evaluacion);
+            paso = EvaluacionBLL.Guardar(evaluacion);
             Assert.AreEqual(paso,true);
         }
 
@@ -32,13 +32,13 @@ namespace Parcial1_AP1.BLL.Tests
         {
             bool paso;
             Evaluacion evaluacion = new Evaluacion();
-            evaluacion.EstudianteId = 1;
+            evaluacion.EstudianteId = 2;
             evaluacion.Fecha = DateTime.Now;
-            evaluacion.Nombre = "Test";
+            evaluacion.Estudiante = "Test";
             evaluacion.Valor = 30;
             evaluacion.Calificacion = 15;
             evaluacion.PuntosPerdidos = evaluacion.Valor - evaluacion.Calificacion;
-            paso = RegistroEvaluacionBLL.Guardar(evaluacion);
+            paso = EvaluacionBLL.Guardar(evaluacion);
             Assert.AreEqual(paso, true);
         }
 
@@ -46,7 +46,7 @@ namespace Parcial1_AP1.BLL.Tests
         public void BuscarTest()
         {
             Evaluacion evaluacion = new Evaluacion();
-            evaluacion = RegistroEvaluacionBLL.Buscar(1);
+            evaluacion = EvaluacionBLL.Buscar(2);
             Assert.AreEqual(evaluacion,evaluacion);
         }
 
@@ -54,7 +54,7 @@ namespace Parcial1_AP1.BLL.Tests
         public void EliminarTest()
         {
             bool paso;
-            paso = RegistroEvaluacionBLL.Eliminar(1);
+            paso = EvaluacionBLL.Eliminar(2);
             Assert.AreEqual(paso,true);
         }
 
@@ -62,7 +62,7 @@ namespace Parcial1_AP1.BLL.Tests
         public void GetListTest()
         {
             var lista = new List<Evaluacion>();
-            lista = RegistroEvaluacionBLL.GetList(p => true);
+            lista = EvaluacionBLL.GetList(p => true);
             Assert.AreEqual(lista,lista);
         }
     }

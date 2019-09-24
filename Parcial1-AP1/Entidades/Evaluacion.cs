@@ -9,9 +9,10 @@ namespace Parcial1_AP1.Entidades
 {
     public class Evaluacion
     {
-        [Key] public int EstudianteId { get; set; }
+        [Key]
+        public int EstudianteId { get; set; }
         public DateTime Fecha { get; set; }
-        public string Nombre { get; set; }
+        public string Estudiante { get; set; }
         public decimal Valor { get; set; }
         public decimal  Calificacion { get; set; }
         public decimal PuntosPerdidos { get; set; }
@@ -21,7 +22,7 @@ namespace Parcial1_AP1.Entidades
         {
             EstudianteId = 0;
             Fecha = DateTime.Now;
-            Nombre = string.Empty;
+            Estudiante = string.Empty;
             Valor = 0;
             Calificacion = 0;
             PuntosPerdidos = 0;

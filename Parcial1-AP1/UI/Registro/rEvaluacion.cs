@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,10 +36,10 @@ namespace Parcial1_AP1.UI.Registro
             Evaluacion evaluacion = new Evaluacion();
             evaluacion.EstudianteId = Convert.ToInt32(EstudianteIdnumericUpDown1.Value);
             evaluacion.Fecha = FechadateTimePicker1.Value;
-            evaluacion.Nombre = EstudinatetextBox1.Text;
-            evaluacion.Valor = decimal.Parse(ValortextBox1.Text);
-            evaluacion.Calificacion = decimal.Parse(CalificaciontextBox1.Text);
-            evaluacion.PuntosPerdidos = decimal.Parse(PuntosperdidostextBox1.Text);
+            evaluacion.Estudiante = EstudinatetextBox1.Text;
+            evaluacion.Valor = Convert.ToDecimal(ValortextBox1.Text);
+            evaluacion.Calificacion = Convert.ToDecimal(CalificaciontextBox1.Text);
+            evaluacion.PuntosPerdidos = Convert.ToDecimal(PuntosperdidostextBox1.Text);
             evaluacion.Pronostico = PronosticocomboBox1.SelectedIndex;
             return evaluacion;
         }
@@ -46,11 +47,11 @@ namespace Parcial1_AP1.UI.Registro
         {
             EstudianteIdnumericUpDown1.Value = evaluacion.EstudianteId;
             FechadateTimePicker1.Value = evaluacion.Fecha;
-            EstudinatetextBox1.Text = evaluacion.Nombre;
+            EstudinatetextBox1.Text = evaluacion.Estudiante;
             ValortextBox1.Text = evaluacion.Valor.ToString();
             CalificaciontextBox1.Text = evaluacion.Calificacion.ToString();
             PuntosperdidostextBox1.Text = evaluacion.PuntosPerdidos.ToString();
-            PronosticocomboBox1.Text = evaluacion.Pronostico.ToString();
+            PronosticocomboBox1.SelectedIndex = evaluacion.Pronostico;
         }
 
         private bool Validar()
@@ -76,12 +77,6 @@ namespace Parcial1_AP1.UI.Registro
                 CalificaciontextBox1.Focus();
                 paso = false;
             }
-            if (PronosticocomboBox1.SelectedIndex == 0)
-            {
-                Myerror.SetError(PronosticocomboBox1, "El campo pronostico no puede estar vacio");
-                PronosticocomboBox1.Focus();
-                paso = false;
-            }
             if (decimal.Parse(ValortextBox1.Text) < 0)
             {
                 Myerror.SetError(ValortextBox1, "El campo valor no debe ser negativo");
@@ -94,7 +89,7 @@ namespace Parcial1_AP1.UI.Registro
                 CalificaciontextBox1.Focus();
                 paso = false;
             }
-            if(decimal.Parse(PuntosperdidostextBox1.Text) < 0)
+            if (decimal.Parse(PuntosperdidostextBox1.Text) < 0)
             {
                 Myerror.SetError(PuntosperdidostextBox1, "El campo punto perdidos no debe ser negativo");
                 PuntosperdidostextBox1.Focus();
@@ -105,7 +100,7 @@ namespace Parcial1_AP1.UI.Registro
 
         private bool Exite()
         {
-            Evaluacion evaluacion = RegistroEvaluacionBLL.Buscar((int)EstudianteIdnumericUpDown1.Value);
+            Evaluacion evaluacion = EvaluacionBLL.Buscar((int)EstudianteIdnumericUpDown1.Value);
             return (evaluacion != null);
         }
 
@@ -120,7 +115,7 @@ namespace Parcial1_AP1.UI.Registro
             Evaluacion evaluacion = new Evaluacion();
             int id;
             int.TryParse(EstudianteIdnumericUpDown1.Text, out id);
-            evaluacion = RegistroEvaluacionBLL.Buscar(id);
+            evaluacion = EvaluacionBLL.Buscar(id);
 
             if (evaluacion != null)
             {
@@ -144,7 +139,7 @@ namespace Parcial1_AP1.UI.Registro
             evaluacion = LlenaClase();
 
             if (EstudianteIdnumericUpDown1.Value == 0)
-                paso = RegistroEvaluacionBLL.Guardar(evaluacion);
+                paso = EvaluacionBLL.Guardar(evaluacion);
             else
             {
                 if (!Exite())
@@ -152,7 +147,7 @@ namespace Parcial1_AP1.UI.Registro
                     MessageBox.Show("estudiante no se pudo guardar", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                paso = RegistroEvaluacionBLL.Modificar(evaluacion);
+                paso = EvaluacionBLL.Modificar(evaluacion);
             }
 
             if (paso)
@@ -171,39 +166,131 @@ namespace Parcial1_AP1.UI.Registro
             Myerror.Clear();
 
             int id;
-            int.TryParse(EstudianteIdnumericUpDown1.Text,out id);
-            
-            if(RegistroEvaluacionBLL.Eliminar(id))
+            int.TryParse(EstudianteIdnumericUpDown1.Text, out id);
+
+            if (EvaluacionBLL.Eliminar(id))
             {
                 MessageBox.Show("Se elimino correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
             }
         }
 
-        private void LogradotextBox1_TextChanged(object sender, EventArgs e)
+        private void ValortextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 8)
+            {
+                e.Handled = false;
+                return;
+            }
+
+            bool paso = false;
+            decimal numero = 0;
+
+            for (int i = 0; i < ValortextBox1.Text.Length; i++)
+            {
+                if (ValortextBox1.Text[i] == '.')
+                    paso = true;
+                if (paso && numero++ >= 2)
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+
+            if (e.KeyChar >= 48 && e.KeyChar <= 57)
+                e.Handled = false;
+            else if (e.KeyChar == 46)
+                e.Handled = (paso) ? true : false;
+            else
+                e.Handled = true;
+        }
+
+        private void CalificaciontextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 8)
+            {
+                e.Handled = false;
+                return;
+            }
+
+            bool paso = false;
+            decimal numero = 0;
+
+            for (int i = 0; i < ValortextBox1.Text.Length; i++)
+            {
+                if (ValortextBox1.Text[i] == '.')
+                    paso = true;
+                if (paso && numero++ >= 2)
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+
+            if (e.KeyChar >= 48 && e.KeyChar <= 57)
+                e.Handled = false;
+            else if (e.KeyChar == 46)
+                e.Handled = (paso) ? true : false;
+            else
+                e.Handled = true;
+        }
+
+        private void CalificaciontextBox1_TextChanged(object sender, EventArgs e)
+        {
+            decimal valor = 0;
+            decimal logrado = 0;
+
+            if (!string.IsNullOrWhiteSpace(ValortextBox1.Text))
+            {
+                valor = Convert.ToDecimal(ValortextBox1.Text);
+            }
+            if (!string.IsNullOrWhiteSpace(CalificaciontextBox1.Text))
+            {
+                logrado = Convert.ToDecimal(CalificaciontextBox1.Text);
+            }
+
+            decimal perdido = valor - logrado;
+
+            PuntosperdidostextBox1.Text = (valor - logrado).ToString();
+
+            if (perdido < 25)
+            {
+                PronosticocomboBox1.SelectedIndex = 0;
+            }
+            if (perdido >= 25 && perdido <= 30)
+            {
+                PronosticocomboBox1.SelectedIndex = 1;
+            }
+            if (perdido > 30)
+            {
+                PronosticocomboBox1.SelectedIndex = 2;
+            }
+        }
+
+        private void ValortextBox1_TextChanged(object sender, EventArgs e)
         {
 
             decimal valor = 0;
             decimal logrado = 0;
 
-            if (ValortextBox1.Text != null)
+            if (!string.IsNullOrWhiteSpace(ValortextBox1.Text))
             {
-                valor = decimal.Parse(ValortextBox1.Text);
+                valor = Convert.ToDecimal(ValortextBox1.Text);
             }
-            if (CalificaciontextBox1.Text != null)
+            if (!string.IsNullOrWhiteSpace(CalificaciontextBox1.Text))
             {
-                logrado = decimal.Parse(CalificaciontextBox1.Text);
+                logrado = Convert.ToDecimal(CalificaciontextBox1.Text);
             }
 
             decimal perdido = valor - logrado;
 
-            PuntosperdidostextBox1.Text = perdido.ToString();
+            PuntosperdidostextBox1.Text = (valor - logrado).ToString();
 
-            if (perdido >= 25 && perdido <= 30)
+            if (perdido < 25)
             {
                 PronosticocomboBox1.SelectedIndex = 0;
             }
-            if (perdido < 25)
+            if (perdido >= 25 && perdido <= 30)
             {
                 PronosticocomboBox1.SelectedIndex = 1;
             }

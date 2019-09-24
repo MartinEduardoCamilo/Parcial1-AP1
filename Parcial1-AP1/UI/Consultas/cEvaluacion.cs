@@ -19,37 +19,32 @@ namespace Parcial1_AP1.UI.Consultas
             InitializeComponent();
         }
 
-        private void CRegistrodeEvaluacion_Load(object sender, EventArgs e)
+        private void Consultabutton1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            var lista = new List<Evaluacion>();
+            var listado = new List<Evaluacion>();
             if(CriteriotextBox1.Text.Trim().Length > 0)
             {
                 switch (FiltrocomboBox1.SelectedIndex)
                 {
-                    case 0:
-                        lista = RegistroEvaluacionBLL.GetList(p => true);
+                    case 0://todo
+                        listado = EvaluacionBLL.GetList(p => true);
                         break;
-                    case 1:
-                        int id = int.Parse(CriteriotextBox1.Text);
-                        lista = RegistroEvaluacionBLL.GetList(p => p.EstudianteId == id);
+                    case 1://id
+                        int id =Convert.ToInt32(CriteriotextBox1.Text);
+                        listado = EvaluacionBLL.GetList(p => p.EstudianteId == id);
                         break;
-                    case 2:
-                        lista = RegistroEvaluacionBLL.GetList(p => p.Nombre.Contains(CriteriotextBox1.Text));
+                    case 2://nombre
+                        listado = EvaluacionBLL.GetList(p => p.Estudiante.Contains(CriteriotextBox1.Text));
                         break;
                 }
-                lista = lista.Where(p => p.Fecha.Date >= DesdedateTimePicker1.Value.Date && p.Fecha <= HastadateTimePicker1.Value.Date).ToList();
+                listado = listado.Where(p => p.Fecha.Date <= DesdedateTimePicker1.Value && p.Fecha.Date >= HastadateTimePicker1.Value).ToList();
             }
             else
             {
-                lista = RegistroEvaluacionBLL.GetList(p => true);
+                listado = EvaluacionBLL.GetList(p => true);
             }
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = lista;
+            ConsultadataGridView1.DataSource = null;
+            ConsultadataGridView1.DataSource = listado;
         }
     }
 }
