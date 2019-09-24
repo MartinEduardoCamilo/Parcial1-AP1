@@ -97,7 +97,6 @@ namespace Parcial1_AP1.UI.Registro
 
         private void Buscarbutton1_Click(object sender, EventArgs e)
         {
-            Limpiar();
             Myerror.Clear();
             Evaluacion evaluacion = new Evaluacion();
             int id;
@@ -105,9 +104,9 @@ namespace Parcial1_AP1.UI.Registro
             evaluacion = RegistroEvaluacionBLL.Buscar(id);
             if (evaluacion != null)
             {
+                Limpiar();
                 MessageBox.Show("Estudiante encontrado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LlenaCampo(evaluacion);
-
             }
             else
             {
