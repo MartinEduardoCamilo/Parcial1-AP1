@@ -40,7 +40,7 @@
             this.ValortextBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.LogradotextBox1 = new System.Windows.Forms.TextBox();
+            this.CalificaciontextBox1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.PuntosperdidostextBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -124,15 +124,15 @@
             // 
             // ValortextBox1
             // 
-            this.ValortextBox1.Location = new System.Drawing.Point(15, 157);
+            this.ValortextBox1.Location = new System.Drawing.Point(171, 157);
             this.ValortextBox1.Name = "ValortextBox1";
-            this.ValortextBox1.Size = new System.Drawing.Size(77, 20);
+            this.ValortextBox1.Size = new System.Drawing.Size(99, 20);
             this.ValortextBox1.TabIndex = 8;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 130);
+            this.label5.Location = new System.Drawing.Point(12, 141);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 9;
@@ -141,24 +141,24 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(180, 130);
+            this.label6.Location = new System.Drawing.Point(168, 141);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Calificacion";
             // 
-            // LogradotextBox1
+            // CalificaciontextBox1
             // 
-            this.LogradotextBox1.Location = new System.Drawing.Point(171, 157);
-            this.LogradotextBox1.Name = "LogradotextBox1";
-            this.LogradotextBox1.Size = new System.Drawing.Size(87, 20);
-            this.LogradotextBox1.TabIndex = 11;
-            this.LogradotextBox1.TextChanged += new System.EventHandler(this.LogradotextBox1_TextChanged);
+            this.CalificaciontextBox1.Location = new System.Drawing.Point(15, 157);
+            this.CalificaciontextBox1.Name = "CalificaciontextBox1";
+            this.CalificaciontextBox1.Size = new System.Drawing.Size(100, 20);
+            this.CalificaciontextBox1.TabIndex = 11;
+            this.CalificaciontextBox1.TextChanged += new System.EventHandler(this.LogradotextBox1_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(320, 130);
+            this.label7.Location = new System.Drawing.Point(320, 141);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 12;
@@ -242,7 +242,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.PuntosperdidostextBox1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.LogradotextBox1);
+            this.Controls.Add(this.CalificaciontextBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ValortextBox1);
@@ -276,7 +276,7 @@
         private System.Windows.Forms.TextBox ValortextBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox LogradotextBox1;
+        private System.Windows.Forms.TextBox CalificaciontextBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox PuntosperdidostextBox1;
         private System.Windows.Forms.Label label8;
