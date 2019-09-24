@@ -105,11 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DAL\Scripts\Scripts.sql" />
-    <Content Include="Resurces\loupe_78956.png" />
-    <Content Include="Resurces\lupa.png" />
-    <Content Include="Resurces\new_page_document_16676.png" />
-    <Content Include="Resurces\savetheapplication_guardar_2958.png" />
-    <Content Include="Resurces\vcsconflicting_93497.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

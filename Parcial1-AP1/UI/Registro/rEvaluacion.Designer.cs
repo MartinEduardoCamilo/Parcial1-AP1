@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rEvaluacion));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.EstudianteIdnumericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -105,7 +104,6 @@
             // 
             // Buscarbutton1
             // 
-            this.Buscarbutton1.Image = ((System.Drawing.Image)(resources.GetObject("Buscarbutton1.Image")));
             this.Buscarbutton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Buscarbutton1.Location = new System.Drawing.Point(171, 11);
             this.Buscarbutton1.Name = "Buscarbutton1";
@@ -196,33 +194,27 @@
             // 
             // Nuevobutton1
             // 
-            this.Nuevobutton1.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton1.Image")));
-            this.Nuevobutton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Nuevobutton1.Location = new System.Drawing.Point(15, 299);
             this.Nuevobutton1.Name = "Nuevobutton1";
             this.Nuevobutton1.Size = new System.Drawing.Size(100, 49);
             this.Nuevobutton1.TabIndex = 16;
             this.Nuevobutton1.Text = "Nuevo";
-            this.Nuevobutton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Nuevobutton1.UseVisualStyleBackColor = true;
             this.Nuevobutton1.Click += new System.EventHandler(this.Nuevobutton1_Click);
             // 
             // Guardarbutton2
             // 
-            this.Guardarbutton2.Image = ((System.Drawing.Image)(resources.GetObject("Guardarbutton2.Image")));
             this.Guardarbutton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Guardarbutton2.Location = new System.Drawing.Point(158, 299);
             this.Guardarbutton2.Name = "Guardarbutton2";
             this.Guardarbutton2.Size = new System.Drawing.Size(100, 48);
             this.Guardarbutton2.TabIndex = 17;
             this.Guardarbutton2.Text = "Guardar";
-            this.Guardarbutton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Guardarbutton2.UseVisualStyleBackColor = true;
             this.Guardarbutton2.Click += new System.EventHandler(this.Guardarbutton2_Click);
             // 
             // Eliminarbutton3
             // 
-            this.Eliminarbutton3.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton3.Image")));
             this.Eliminarbutton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Eliminarbutton3.Location = new System.Drawing.Point(309, 299);
             this.Eliminarbutton3.Name = "Eliminarbutton3";
