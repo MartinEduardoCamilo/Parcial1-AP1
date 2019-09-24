@@ -40,7 +40,7 @@
             this.ValortextBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.CalificaciontextBox1 = new System.Windows.Forms.TextBox();
+            this.LogradotextBox1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.PuntosperdidostextBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -147,12 +147,13 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Calificacion";
             // 
-            // CalificaciontextBox1
+            // LogradotextBox1
             // 
-            this.CalificaciontextBox1.Location = new System.Drawing.Point(171, 157);
-            this.CalificaciontextBox1.Name = "CalificaciontextBox1";
-            this.CalificaciontextBox1.Size = new System.Drawing.Size(87, 20);
-            this.CalificaciontextBox1.TabIndex = 11;
+            this.LogradotextBox1.Location = new System.Drawing.Point(171, 157);
+            this.LogradotextBox1.Name = "LogradotextBox1";
+            this.LogradotextBox1.Size = new System.Drawing.Size(87, 20);
+            this.LogradotextBox1.TabIndex = 11;
+            this.LogradotextBox1.TextChanged += new System.EventHandler(this.LogradotextBox1_TextChanged);
             // 
             // label7
             // 
@@ -241,7 +242,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.PuntosperdidostextBox1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.CalificaciontextBox1);
+            this.Controls.Add(this.LogradotextBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ValortextBox1);
@@ -275,7 +276,7 @@
         private System.Windows.Forms.TextBox ValortextBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox CalificaciontextBox1;
+        private System.Windows.Forms.TextBox LogradotextBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox PuntosperdidostextBox1;
         private System.Windows.Forms.Label label8;

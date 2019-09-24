@@ -25,9 +25,9 @@ namespace Parcial1_AP1.UI.Registro
             FechadateTimePicker1.Value = DateTime.Now;
             EstudinatetextBox1.Text = string.Empty;
             ValortextBox1.Text = string.Empty;
-            CalificaciontextBox1.Text = string.Empty;
+            LogradotextBox1.Text = string.Empty;
             PuntosperdidostextBox1.Text = string.Empty;
-            PronosticocomboBox1.Text = string.Empty;
+            PronosticocomboBox1.SelectedItem = 0;
             Myerror.Clear();
         }
         private Evaluacion LlenaClase()
@@ -36,9 +36,10 @@ namespace Parcial1_AP1.UI.Registro
             evaluacion.EstudianteId = Convert.ToInt32(EstudianteIdnumericUpDown1.Value);
             evaluacion.Fecha = FechadateTimePicker1.Value;
             evaluacion.Nombre = EstudinatetextBox1.Text;
-            evaluacion.Valor = Convert.ToDecimal(ValortextBox1.Text);
-            evaluacion.Calificacion = Convert.ToDecimal(CalificaciontextBox1.Text);
-            evaluacion.PuntosPerdidos = Convert.ToDecimal(ValortextBox1.Text) - Convert.ToDecimal(CalificaciontextBox1.Text);
+            evaluacion.Valor = decimal.Parse(ValortextBox1.Text);
+            evaluacion.Logrado = decimal.Parse(LogradotextBox1.Text);
+            evaluacion.PuntosPerdidos = decimal.Parse(PuntosperdidostextBox1.Text);
+            evaluacion.Pronostico = PronosticocomboBox1.SelectedIndex;
             return evaluacion;
         }
         private void LlenaCampo(Evaluacion evaluacion)
@@ -47,7 +48,7 @@ namespace Parcial1_AP1.UI.Registro
             FechadateTimePicker1.Value = evaluacion.Fecha;
             EstudinatetextBox1.Text = evaluacion.Nombre;
             ValortextBox1.Text = evaluacion.Valor.ToString();
-            CalificaciontextBox1.Text = evaluacion.Calificacion.ToString();
+            LogradotextBox1.Text = evaluacion.Logrado.ToString();
             PuntosperdidostextBox1.Text = evaluacion.PuntosPerdidos.ToString();
             PronosticocomboBox1.Text = evaluacion.Pronostico.ToString();
         }
@@ -69,16 +70,34 @@ namespace Parcial1_AP1.UI.Registro
                 ValortextBox1.Focus();
                 paso = false;
             }
-            if (string.IsNullOrWhiteSpace(CalificaciontextBox1.Text))
+            if (string.IsNullOrWhiteSpace(LogradotextBox1.Text))
             {
-                Myerror.SetError(CalificaciontextBox1, "El campo calificacion no puede estar vacio");
-                CalificaciontextBox1.Focus();
+                Myerror.SetError(LogradotextBox1, "El campo calificacion no puede estar vacio");
+                LogradotextBox1.Focus();
                 paso = false;
             }
             if (PronosticocomboBox1.SelectedIndex == 0)
             {
                 Myerror.SetError(PronosticocomboBox1, "El campo pronostico no puede estar vacio");
                 PronosticocomboBox1.Focus();
+                paso = false;
+            }
+            if (decimal.Parse(ValortextBox1.Text) < 0)
+            {
+                Myerror.SetError(ValortextBox1, "El campo valor no debe ser negativo");
+                ValortextBox1.Focus();
+                paso = false;
+            }
+            if (decimal.Parse(LogradotextBox1.Text) < 0)
+            {
+                Myerror.SetError(LogradotextBox1, "El campo calificacion no debe ser negativo");
+                LogradotextBox1.Focus();
+                paso = false;
+            }
+            if(decimal.Parse(PuntosperdidostextBox1.Text) < 0)
+            {
+                Myerror.SetError(PuntosperdidostextBox1, "El campo punto perdidos no debe ser negativo");
+                PuntosperdidostextBox1.Focus();
                 paso = false;
             }
             return paso;
@@ -163,6 +182,39 @@ namespace Parcial1_AP1.UI.Registro
             {
                 Myerror.SetError(EstudianteIdnumericUpDown1, "no se puede borrar al alguien que no existe");
                 EstudianteIdnumericUpDown1.Focus();
+            }
+        }
+
+        private void LogradotextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            decimal valor = 0;
+            decimal logrado = 0;
+
+            if (ValortextBox1.Text != null)
+            {
+                valor = decimal.Parse(ValortextBox1.Text);
+            }
+            if (LogradotextBox1.Text != null)
+            {
+                logrado = decimal.Parse(LogradotextBox1.Text);
+            }
+
+            decimal perdido = valor - logrado;
+
+            PuntosperdidostextBox1.Text = perdido.ToString();
+
+            if (perdido >= 25 && perdido <= 30)
+            {
+                PronosticocomboBox1.SelectedIndex = 0;
+            }
+            if (perdido < 25)
+            {
+                PronosticocomboBox1.SelectedIndex = 1;
+            }
+            if (perdido > 30)
+            {
+                PronosticocomboBox1.SelectedIndex = 2;
             }
         }
     }

@@ -1,7 +1,10 @@
 ﻿using Parcial1_AP1.DAL;
 using Parcial1_AP1.Entidades;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Parcial1_AP1.BLL
 {
@@ -87,6 +90,25 @@ namespace Parcial1_AP1.BLL
                 db.Dispose();
             }
             return paso;
+        }
+
+        public static List<Evaluacion> GetList(Expression<Func<Evaluacion, bool>> evaluacion)
+        {
+            List<Evaluacion> lista = new List<Evaluacion>();
+            Contexto db = new Contexto();
+            try
+            {
+                lista = db.Evaluacions.Where(evaluacion).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return lista;
         }
     }
 }
