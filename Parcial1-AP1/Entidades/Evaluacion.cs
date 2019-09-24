@@ -9,8 +9,7 @@ namespace Parcial1_AP1.Entidades
 {
     public class Evaluacion
     {
-        [Key]
-        public int EstudianteId { get; set; }
+        [Key] public int EstudianteId { get; set; }
         public DateTime Fecha { get; set; }
         public string Nombre { get; set; }
         public decimal Valor { get; set; }

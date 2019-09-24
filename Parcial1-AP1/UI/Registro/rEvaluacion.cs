@@ -100,11 +100,10 @@ namespace Parcial1_AP1.UI.Registro
             Limpiar();
             Myerror.Clear();
             Evaluacion evaluacion = new Evaluacion();
-            int id = Convert.ToInt32(EstudianteIdnumericUpDown1.Value);
-
-            
-
-            if (RegistroEvaluacionBLL.Buscar(id) != null)
+            int id;
+            int.TryParse(EstudianteIdnumericUpDown1.Text, out id);
+            evaluacion = RegistroEvaluacionBLL.Buscar(id);
+            if (evaluacion != null)
             {
                 MessageBox.Show("Estudiante encontrado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LlenaCampo(evaluacion);
@@ -112,7 +111,7 @@ namespace Parcial1_AP1.UI.Registro
             }
             else
             {
-                MessageBox.Show("Estudiante no encontrado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Estudiante no encontrado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -152,8 +151,9 @@ namespace Parcial1_AP1.UI.Registro
         private void Eliminarbutton3_Click(object sender, EventArgs e)
         {
             Myerror.Clear();
-            
-            int id = (int)EstudianteIdnumericUpDown1.Value;
+
+            int id;
+            int.TryParse(EstudianteIdnumericUpDown1.Text,out id);
             
             if(RegistroEvaluacionBLL.Eliminar(id))
             {

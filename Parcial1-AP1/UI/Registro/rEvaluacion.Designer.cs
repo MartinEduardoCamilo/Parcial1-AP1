@@ -194,6 +194,7 @@
             // 
             // Nuevobutton1
             // 
+            this.Nuevobutton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Nuevobutton1.Location = new System.Drawing.Point(15, 299);
             this.Nuevobutton1.Name = "Nuevobutton1";
             this.Nuevobutton1.Size = new System.Drawing.Size(100, 49);
