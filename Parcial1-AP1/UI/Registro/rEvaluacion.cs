@@ -22,7 +22,7 @@ namespace Parcial1_AP1.UI.Registro
 
         private void Limpiar()
         {
-            EstudianteIdnumericUpDown1.Value = 0;
+            EvaluacionIdnumericUpDown1.Value = 0;
             FechadateTimePicker1.Value = DateTime.Now;
             EstudinatetextBox1.Text = string.Empty;
             ValortextBox1.Text = string.Empty;
@@ -34,7 +34,7 @@ namespace Parcial1_AP1.UI.Registro
         private Evaluacion LlenaClase()
         {
             Evaluacion evaluacion = new Evaluacion();
-            evaluacion.EstudianteId = Convert.ToInt32(EstudianteIdnumericUpDown1.Value);
+            evaluacion.Evaluacionid = Convert.ToInt32(EvaluacionIdnumericUpDown1.Value);
             evaluacion.Fecha = FechadateTimePicker1.Value;
             evaluacion.Estudiante = EstudinatetextBox1.Text;
             evaluacion.Valor = Convert.ToDecimal(ValortextBox1.Text);
@@ -45,7 +45,7 @@ namespace Parcial1_AP1.UI.Registro
         }
         private void LlenaCampo(Evaluacion evaluacion)
         {
-            EstudianteIdnumericUpDown1.Value = evaluacion.EstudianteId;
+            EvaluacionIdnumericUpDown1.Value = evaluacion.Evaluacionid;
             FechadateTimePicker1.Value = evaluacion.Fecha;
             EstudinatetextBox1.Text = evaluacion.Estudiante;
             ValortextBox1.Text = evaluacion.Valor.ToString();
@@ -100,7 +100,7 @@ namespace Parcial1_AP1.UI.Registro
 
         private bool Exite()
         {
-            Evaluacion evaluacion = EvaluacionBLL.Buscar((int)EstudianteIdnumericUpDown1.Value);
+            Evaluacion evaluacion = EvaluacionBLL.Buscar((int)EvaluacionIdnumericUpDown1.Value);
             return (evaluacion != null);
         }
 
@@ -114,7 +114,7 @@ namespace Parcial1_AP1.UI.Registro
             Myerror.Clear();
             Evaluacion evaluacion = new Evaluacion();
             int id;
-            int.TryParse(EstudianteIdnumericUpDown1.Text, out id);
+            int.TryParse(EvaluacionIdnumericUpDown1.Text, out id);
             evaluacion = EvaluacionBLL.Buscar(id);
 
             if (evaluacion != null)
@@ -138,7 +138,7 @@ namespace Parcial1_AP1.UI.Registro
 
             evaluacion = LlenaClase();
 
-            if (EstudianteIdnumericUpDown1.Value == 0)
+            if (EvaluacionIdnumericUpDown1.Value == 0)
                 paso = EvaluacionBLL.Guardar(evaluacion);
             else
             {
@@ -166,7 +166,7 @@ namespace Parcial1_AP1.UI.Registro
             Myerror.Clear();
 
             int id;
-            int.TryParse(EstudianteIdnumericUpDown1.Text, out id);
+            int.TryParse(EvaluacionIdnumericUpDown1.Text, out id);
             bool paso = EvaluacionBLL.Eliminar(id);
             if (paso)
             {
@@ -179,6 +179,7 @@ namespace Parcial1_AP1.UI.Registro
             }
         }
 
+        // validacion para que no reciba caracteres
         private void ValortextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 8)
@@ -209,6 +210,7 @@ namespace Parcial1_AP1.UI.Registro
                 e.Handled = true;
         }
 
+        // validacion para que no reciba caracteres
         private void CalificaciontextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 8)
@@ -249,16 +251,16 @@ namespace Parcial1_AP1.UI.Registro
 
             if (!string.IsNullOrWhiteSpace(ValortextBox1.Text))
             {
-                valor = Convert.ToDecimal(ValortextBox1.Text);
+                valor = Convert.ToDecimal(ValortextBox1.Text, CultureInfo.CreateSpecificCulture("en-US"));
             }
             if (!string.IsNullOrWhiteSpace(LogradotextBox1.Text))
             {
-                logrado = Convert.ToDecimal(LogradotextBox1.Text);
+                logrado = Convert.ToDecimal(LogradotextBox1.Text, CultureInfo.CreateSpecificCulture("en-US"));
             }
 
             decimal perdido = valor - logrado;
 
-            PuntosperdidostextBox1.Text = (valor - logrado).ToString();
+            PuntosperdidostextBox1.Text = perdido.ToString();
 
             if (perdido < 25)
             {
@@ -281,16 +283,16 @@ namespace Parcial1_AP1.UI.Registro
 
             if (!string.IsNullOrWhiteSpace(ValortextBox1.Text))
             {
-                valor = Convert.ToDecimal(ValortextBox1.Text);
+                valor = Convert.ToDecimal(ValortextBox1.Text, CultureInfo.CreateSpecificCulture("en-US"));
             }
             if (!string.IsNullOrWhiteSpace(LogradotextBox1.Text))
             {
-                logrado = Convert.ToDecimal(LogradotextBox1.Text);
+                logrado = Convert.ToDecimal(LogradotextBox1.Text,CultureInfo.CreateSpecificCulture("en-US"));
             }
 
             decimal perdido = valor - logrado;
 
-            PuntosperdidostextBox1.Text = (valor - logrado).ToString();
+            PuntosperdidostextBox1.Text = perdido.ToString();
 
             if (perdido < 25)
             {

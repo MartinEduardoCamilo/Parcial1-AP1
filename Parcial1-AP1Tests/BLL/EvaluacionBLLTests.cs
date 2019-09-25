@@ -17,7 +17,7 @@ namespace Parcial1_AP1.BLL.Tests
         {
             bool paso;
             Evaluacion evaluacion = new Evaluacion();
-            evaluacion.EstudianteId = 0;
+            evaluacion.Evaluacionid = 0;
             evaluacion.Fecha = DateTime.Now;
             evaluacion.Estudiante = "Test";
             evaluacion.Valor = 20;
@@ -32,7 +32,7 @@ namespace Parcial1_AP1.BLL.Tests
         {
             bool paso;
             Evaluacion evaluacion = new Evaluacion();
-            evaluacion.EstudianteId = 2;
+            evaluacion.Evaluacionid = 2;
             evaluacion.Fecha = DateTime.Now;
             evaluacion.Estudiante = "Test";
             evaluacion.Valor = 30;

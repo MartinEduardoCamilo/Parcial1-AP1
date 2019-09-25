@@ -64,7 +64,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="BLL\RegistroEvaluacionBLLTests.cs" />
+    <Compile Include="BLL\EvaluacionBLLTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rEvaluacion));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.EstudianteIdnumericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.EvaluacionIdnumericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.FechadateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.EstudinatetextBox1 = new System.Windows.Forms.TextBox();
@@ -50,7 +50,7 @@
             this.Guardarbutton2 = new System.Windows.Forms.Button();
             this.Eliminarbutton3 = new System.Windows.Forms.Button();
             this.Myerror = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.EstudianteIdnumericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EvaluacionIdnumericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Myerror)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,9 +59,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "EstudianteId";
+            this.label1.Text = "EvaluacionID";
             // 
             // label2
             // 
@@ -72,12 +72,12 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Fecha";
             // 
-            // EstudianteIdnumericUpDown1
+            // EvaluacionIdnumericUpDown1
             // 
-            this.EstudianteIdnumericUpDown1.Location = new System.Drawing.Point(83, 14);
-            this.EstudianteIdnumericUpDown1.Name = "EstudianteIdnumericUpDown1";
-            this.EstudianteIdnumericUpDown1.Size = new System.Drawing.Size(70, 20);
-            this.EstudianteIdnumericUpDown1.TabIndex = 2;
+            this.EvaluacionIdnumericUpDown1.Location = new System.Drawing.Point(83, 14);
+            this.EvaluacionIdnumericUpDown1.Name = "EvaluacionIdnumericUpDown1";
+            this.EvaluacionIdnumericUpDown1.Size = new System.Drawing.Size(70, 20);
+            this.EvaluacionIdnumericUpDown1.TabIndex = 2;
             // 
             // FechadateTimePicker1
             // 
@@ -255,12 +255,12 @@
             this.Controls.Add(this.EstudinatetextBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.FechadateTimePicker1);
-            this.Controls.Add(this.EstudianteIdnumericUpDown1);
+            this.Controls.Add(this.EvaluacionIdnumericUpDown1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "rEvaluacion";
             this.Text = "Registro Evaluacion";
-            ((System.ComponentModel.ISupportInitialize)(this.EstudianteIdnumericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EvaluacionIdnumericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Myerror)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -271,7 +271,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown EstudianteIdnumericUpDown1;
+        private System.Windows.Forms.NumericUpDown EvaluacionIdnumericUpDown1;
         private System.Windows.Forms.DateTimePicker FechadateTimePicker1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox EstudinatetextBox1;

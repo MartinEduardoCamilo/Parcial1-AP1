@@ -10,7 +10,7 @@ namespace Parcial1_AP1.Entidades
     public class Evaluacion
     {
         [Key]
-        public int EstudianteId { get; set; }
+        public int Evaluacionid { get; set; }
         public DateTime Fecha { get; set; }
         public string Estudiante { get; set; }
         public decimal Valor { get; set; }
@@ -20,7 +20,7 @@ namespace Parcial1_AP1.Entidades
 
         public Evaluacion()
         {
-            EstudianteId = 0;
+            Evaluacionid = 0;
             Fecha = DateTime.Now;
             Estudiante = string.Empty;
             Valor = 0;

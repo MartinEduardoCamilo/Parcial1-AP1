@@ -32,7 +32,7 @@ namespace Parcial1_AP1.UI.Consultas
                         break;
                     case 1://id
                         int id = Convert.ToInt32(CriteriotextBox1.Text);
-                        lista = EvaluacionBLL.GetList(p => p.EstudianteId == id);
+                        lista = EvaluacionBLL.GetList(p => p.Evaluacionid == id);
                         break;
                     case 2://nombre
                         lista = EvaluacionBLL.GetList(p => p.Estudiante.Contains(CriteriotextBox1.Text));
