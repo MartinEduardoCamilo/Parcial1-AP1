@@ -26,7 +26,7 @@ namespace Parcial1_AP1.UI.Registro
             FechadateTimePicker1.Value = DateTime.Now;
             EstudinatetextBox1.Text = string.Empty;
             ValortextBox1.Text = string.Empty;
-            CalificaciontextBox1.Text = string.Empty;
+            LogradotextBox1.Text = string.Empty;
             PuntosperdidostextBox1.Text = string.Empty;
             PronosticocomboBox1.SelectedItem = 0;
             Myerror.Clear();
@@ -38,7 +38,7 @@ namespace Parcial1_AP1.UI.Registro
             evaluacion.Fecha = FechadateTimePicker1.Value;
             evaluacion.Estudiante = EstudinatetextBox1.Text;
             evaluacion.Valor = Convert.ToDecimal(ValortextBox1.Text);
-            evaluacion.Calificacion = Convert.ToDecimal(CalificaciontextBox1.Text);
+            evaluacion.Logrado = Convert.ToDecimal(LogradotextBox1.Text);
             evaluacion.PuntosPerdidos = Convert.ToDecimal(PuntosperdidostextBox1.Text);
             evaluacion.Pronostico = PronosticocomboBox1.SelectedIndex;
             return evaluacion;
@@ -49,7 +49,7 @@ namespace Parcial1_AP1.UI.Registro
             FechadateTimePicker1.Value = evaluacion.Fecha;
             EstudinatetextBox1.Text = evaluacion.Estudiante;
             ValortextBox1.Text = evaluacion.Valor.ToString();
-            CalificaciontextBox1.Text = evaluacion.Calificacion.ToString();
+            LogradotextBox1.Text = evaluacion.Logrado.ToString();
             PuntosperdidostextBox1.Text = evaluacion.PuntosPerdidos.ToString();
             PronosticocomboBox1.SelectedIndex = evaluacion.Pronostico;
         }
@@ -71,10 +71,10 @@ namespace Parcial1_AP1.UI.Registro
                 ValortextBox1.Focus();
                 paso = false;
             }
-            if (string.IsNullOrWhiteSpace(CalificaciontextBox1.Text))
+            if (string.IsNullOrWhiteSpace(LogradotextBox1.Text))
             {
-                Myerror.SetError(CalificaciontextBox1, "El campo calificacion no puede estar vacio");
-                CalificaciontextBox1.Focus();
+                Myerror.SetError(LogradotextBox1, "El campo calificacion no puede estar vacio");
+                LogradotextBox1.Focus();
                 paso = false;
             }
             if (decimal.Parse(ValortextBox1.Text) < 0)
@@ -83,10 +83,10 @@ namespace Parcial1_AP1.UI.Registro
                 ValortextBox1.Focus();
                 paso = false;
             }
-            if (decimal.Parse(CalificaciontextBox1.Text) < 0)
+            if (decimal.Parse(LogradotextBox1.Text) < 0)
             {
-                Myerror.SetError(CalificaciontextBox1, "El campo calificacion no debe ser negativo");
-                CalificaciontextBox1.Focus();
+                Myerror.SetError(LogradotextBox1, "El campo calificacion no debe ser negativo");
+                LogradotextBox1.Focus();
                 paso = false;
             }
             if (decimal.Parse(PuntosperdidostextBox1.Text) < 0)
@@ -152,7 +152,7 @@ namespace Parcial1_AP1.UI.Registro
 
             if (paso)
             {
-                MessageBox.Show("Se guardo", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
             }
             else
@@ -167,11 +167,15 @@ namespace Parcial1_AP1.UI.Registro
 
             int id;
             int.TryParse(EstudianteIdnumericUpDown1.Text, out id);
-
-            if (EvaluacionBLL.Eliminar(id))
+            bool paso = EvaluacionBLL.Eliminar(id);
+            if (paso)
             {
                 MessageBox.Show("Se elimino correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -235,8 +239,11 @@ namespace Parcial1_AP1.UI.Registro
                 e.Handled = true;
         }
 
-        private void CalificaciontextBox1_TextChanged(object sender, EventArgs e)
+        
+
+        private void ValortextBox1_TextChanged(object sender, EventArgs e)
         {
+
             decimal valor = 0;
             decimal logrado = 0;
 
@@ -244,9 +251,9 @@ namespace Parcial1_AP1.UI.Registro
             {
                 valor = Convert.ToDecimal(ValortextBox1.Text);
             }
-            if (!string.IsNullOrWhiteSpace(CalificaciontextBox1.Text))
+            if (!string.IsNullOrWhiteSpace(LogradotextBox1.Text))
             {
-                logrado = Convert.ToDecimal(CalificaciontextBox1.Text);
+                logrado = Convert.ToDecimal(LogradotextBox1.Text);
             }
 
             decimal perdido = valor - logrado;
@@ -267,9 +274,8 @@ namespace Parcial1_AP1.UI.Registro
             }
         }
 
-        private void ValortextBox1_TextChanged(object sender, EventArgs e)
+        private void LogradotextBox1_TextChanged(object sender, EventArgs e)
         {
-
             decimal valor = 0;
             decimal logrado = 0;
 
@@ -277,9 +283,9 @@ namespace Parcial1_AP1.UI.Registro
             {
                 valor = Convert.ToDecimal(ValortextBox1.Text);
             }
-            if (!string.IsNullOrWhiteSpace(CalificaciontextBox1.Text))
+            if (!string.IsNullOrWhiteSpace(LogradotextBox1.Text))
             {
-                logrado = Convert.ToDecimal(CalificaciontextBox1.Text);
+                logrado = Convert.ToDecimal(LogradotextBox1.Text);
             }
 
             decimal perdido = valor - logrado;

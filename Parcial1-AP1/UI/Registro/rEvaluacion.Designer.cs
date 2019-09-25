@@ -41,7 +41,7 @@
             this.ValortextBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.CalificaciontextBox1 = new System.Windows.Forms.TextBox();
+            this.LogradotextBox1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.PuntosperdidostextBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -81,7 +81,8 @@
             // 
             // FechadateTimePicker1
             // 
-            this.FechadateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.FechadateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.FechadateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.FechadateTimePicker1.Location = new System.Drawing.Point(241, 16);
             this.FechadateTimePicker1.Name = "FechadateTimePicker1";
             this.FechadateTimePicker1.Size = new System.Drawing.Size(93, 20);
@@ -145,18 +146,18 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(131, 141);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Calificacion";
+            this.label6.Text = "Logrado";
             // 
-            // CalificaciontextBox1
+            // LogradotextBox1
             // 
-            this.CalificaciontextBox1.Location = new System.Drawing.Point(134, 157);
-            this.CalificaciontextBox1.Name = "CalificaciontextBox1";
-            this.CalificaciontextBox1.Size = new System.Drawing.Size(90, 20);
-            this.CalificaciontextBox1.TabIndex = 11;
-            this.CalificaciontextBox1.TextChanged += new System.EventHandler(this.CalificaciontextBox1_TextChanged);
-            this.CalificaciontextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CalificaciontextBox1_KeyPress);
+            this.LogradotextBox1.Location = new System.Drawing.Point(134, 157);
+            this.LogradotextBox1.Name = "LogradotextBox1";
+            this.LogradotextBox1.Size = new System.Drawing.Size(90, 20);
+            this.LogradotextBox1.TabIndex = 11;
+            this.LogradotextBox1.TextChanged += new System.EventHandler(this.LogradotextBox1_TextChanged);
+            this.LogradotextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CalificaciontextBox1_KeyPress);
             // 
             // label7
             // 
@@ -245,7 +246,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.PuntosperdidostextBox1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.CalificaciontextBox1);
+            this.Controls.Add(this.LogradotextBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ValortextBox1);
@@ -279,7 +280,7 @@
         private System.Windows.Forms.TextBox ValortextBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox CalificaciontextBox1;
+        private System.Windows.Forms.TextBox LogradotextBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox PuntosperdidostextBox1;
         private System.Windows.Forms.Label label8;

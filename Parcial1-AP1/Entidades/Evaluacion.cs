@@ -14,7 +14,7 @@ namespace Parcial1_AP1.Entidades
         public DateTime Fecha { get; set; }
         public string Estudiante { get; set; }
         public decimal Valor { get; set; }
-        public decimal  Calificacion { get; set; }
+        public decimal  Logrado { get; set; }
         public decimal PuntosPerdidos { get; set; }
         public int Pronostico { get; set; }
 
@@ -24,7 +24,7 @@ namespace Parcial1_AP1.Entidades
             Fecha = DateTime.Now;
             Estudiante = string.Empty;
             Valor = 0;
-            Calificacion = 0;
+            Logrado = 0;
             PuntosPerdidos = 0;
             Pronostico = 0;
         }

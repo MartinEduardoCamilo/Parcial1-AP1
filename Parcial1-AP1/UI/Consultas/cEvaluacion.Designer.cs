@@ -62,7 +62,7 @@
             // DesdedateTimePicker1
             // 
             this.DesdedateTimePicker1.CustomFormat = "dd\\MM\\yyyy";
-            this.DesdedateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DesdedateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DesdedateTimePicker1.Location = new System.Drawing.Point(16, 29);
             this.DesdedateTimePicker1.Name = "DesdedateTimePicker1";
             this.DesdedateTimePicker1.Size = new System.Drawing.Size(79, 20);
@@ -71,7 +71,7 @@
             // HastadateTimePicker1
             // 
             this.HastadateTimePicker1.CustomFormat = "dd\\MM\\yyyy";
-            this.HastadateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.HastadateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.HastadateTimePicker1.Location = new System.Drawing.Point(106, 29);
             this.HastadateTimePicker1.Name = "HastadateTimePicker1";
             this.HastadateTimePicker1.Size = new System.Drawing.Size(81, 20);
@@ -90,7 +90,7 @@
             // 
             this.FiltrocomboBox1.FormattingEnabled = true;
             this.FiltrocomboBox1.Items.AddRange(new object[] {
-            "Todos",
+            "Todo",
             "ID",
             "Nombre"});
             this.FiltrocomboBox1.Location = new System.Drawing.Point(193, 28);

@@ -94,11 +94,11 @@ namespace Parcial1_AP1.BLL
 
        public static List<Evaluacion>GetList(Expression<Func<Evaluacion,bool>> evaluacion)
         {
-            List<Evaluacion> lista = new List<Evaluacion>();
+            List<Evaluacion> Listado = new List<Evaluacion>();
             Contexto db = new Contexto();
             try
             {
-                lista = db.Evaluacions.Where(evaluacion).ToList();
+                Listado = db.Evaluacions.Where(evaluacion).ToList();
             }
             catch (Exception)
             {
@@ -108,7 +108,7 @@ namespace Parcial1_AP1.BLL
             {
                 db.Dispose();
             }
-            return lista;
+            return Listado;
         }
     }
 }

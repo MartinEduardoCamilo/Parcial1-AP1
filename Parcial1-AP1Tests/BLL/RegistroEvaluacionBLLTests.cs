@@ -21,8 +21,8 @@ namespace Parcial1_AP1.BLL.Tests
             evaluacion.Fecha = DateTime.Now;
             evaluacion.Estudiante = "Test";
             evaluacion.Valor = 20;
-            evaluacion.Calificacion = 15;
-            evaluacion.PuntosPerdidos = evaluacion.Valor - evaluacion.Calificacion;
+            evaluacion.Logrado = 15;
+            evaluacion.PuntosPerdidos = evaluacion.Valor - evaluacion.Logrado;
             paso = EvaluacionBLL.Guardar(evaluacion);
             Assert.AreEqual(paso,true);
         }
@@ -36,8 +36,8 @@ namespace Parcial1_AP1.BLL.Tests
             evaluacion.Fecha = DateTime.Now;
             evaluacion.Estudiante = "Test";
             evaluacion.Valor = 30;
-            evaluacion.Calificacion = 15;
-            evaluacion.PuntosPerdidos = evaluacion.Valor - evaluacion.Calificacion;
+            evaluacion.Logrado = 15;
+            evaluacion.PuntosPerdidos = evaluacion.Valor - evaluacion.Logrado;
             paso = EvaluacionBLL.Guardar(evaluacion);
             Assert.AreEqual(paso, true);
         }
