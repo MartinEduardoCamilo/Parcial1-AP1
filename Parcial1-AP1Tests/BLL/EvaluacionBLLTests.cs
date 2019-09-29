@@ -32,7 +32,7 @@ namespace Parcial1_AP1.BLL.Tests
         {
             bool paso;
             Evaluacion evaluacion = new Evaluacion();
-            evaluacion.Evaluacionid = 2;
+            evaluacion.Evaluacionid = 3;
             evaluacion.Fecha = DateTime.Now;
             evaluacion.Estudiante = "Test";
             evaluacion.Valor = 30;
@@ -46,7 +46,7 @@ namespace Parcial1_AP1.BLL.Tests
         public void BuscarTest()
         {
             Evaluacion evaluacion = new Evaluacion();
-            evaluacion = EvaluacionBLL.Buscar(2);
+            evaluacion = EvaluacionBLL.Buscar(3);
             Assert.AreEqual(evaluacion,evaluacion);
         }
 

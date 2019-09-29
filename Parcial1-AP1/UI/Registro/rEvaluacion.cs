@@ -98,7 +98,7 @@ namespace Parcial1_AP1.UI.Registro
             return paso;
         }
 
-        private bool Exite()
+        private bool Existe()
         {
             Evaluacion evaluacion = EvaluacionBLL.Buscar((int)EvaluacionIdnumericUpDown1.Value);
             return (evaluacion != null);
@@ -124,7 +124,7 @@ namespace Parcial1_AP1.UI.Registro
             }
             else
             {
-                MessageBox.Show("Estudiante no encontrado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Encontrado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -142,7 +142,7 @@ namespace Parcial1_AP1.UI.Registro
                 paso = EvaluacionBLL.Guardar(evaluacion);
             else
             {
-                if (!Exite())
+                if (!Existe())
                 {
                     MessageBox.Show("estudiante no se pudo guardar", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -167,7 +167,19 @@ namespace Parcial1_AP1.UI.Registro
 
             int id;
             int.TryParse(EvaluacionIdnumericUpDown1.Text, out id);
-            bool paso = EvaluacionBLL.Eliminar(id);
+            bool paso;
+
+
+
+            if (!Existe())
+            {
+                MessageBox.Show("No se pudo eliminar por que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Limpiar();
+                return;
+            }
+
+            paso = EvaluacionBLL.Eliminar(id);
+
             if (paso)
             {
                 MessageBox.Show("Se elimino correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);

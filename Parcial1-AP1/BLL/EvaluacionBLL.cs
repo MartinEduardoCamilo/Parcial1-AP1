@@ -79,6 +79,7 @@ namespace Parcial1_AP1.BLL
             {
                 var eliminar = db.Evaluacions.Find(id);
                 db.Entry(eliminar).State = EntityState.Deleted;
+                
                 paso = (db.SaveChanges() > 0);
             }
             catch (Exception)
